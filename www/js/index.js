@@ -58,5 +58,19 @@ var app = {
         quality: 50,
         destinationType: Camera.DestinationType.FILE_URI
       });
+    },
+    
+    takeScanner: function() {
+      cordova.plugins.barcodeScanner.scan(
+          function (result) {
+              alert("We got a barcode\n" +
+                    "Result: " + result.text + "\n" +
+                    "Format: " + result.format + "\n" +
+                    "Cancelled: " + result.cancelled);
+          }, 
+          function (error) {
+              alert("Scanning failed: " + error);
+          }
+       );
     }
 };
